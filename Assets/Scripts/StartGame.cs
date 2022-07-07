@@ -7,8 +7,10 @@ public class StartGame : MonoBehaviour
 {
     public void MainStart()
     {
+        
         PickItem.score = 0;
         SceneManager.LoadScene("SceneGame");
+        
     }
     public void ExitGame()
     {
@@ -20,6 +22,7 @@ public class StartGame : MonoBehaviour
     }
     public void PlayAgain()
     {
+       
         PickItem.score = 0;
         SceneManager.LoadScene("SceneGame");
     }

@@ -16,10 +16,8 @@ public class PickItem : MonoBehaviour
     bool Poison;
     CharacterMovement characterMovement;
     public GameObject EndUI;
-
-
-    //public AudioClip completeSound;
-    //int itemCount;
+    public Text BestScore;
+    public static int bscore;
 
 
     private void Start()
@@ -29,6 +27,14 @@ public class PickItem : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         scoreText.text = "Score = " + score.ToString();
         scoreText2.text = "Score = " + score.ToString();
+    }
+
+    private void Update()
+    {
+         if (score > bscore)
+        {
+             bscore = score;
+        }
     }
     private void OnCollisionEnter(Collision target)
     {
@@ -49,7 +55,8 @@ public class PickItem : MonoBehaviour
             audioSource.PlayOneShot(itemPoison);
             EndUI.SetActive(true);
             scoreText2.text = "Score = " + score.ToString();
-
+        
+            BestScore.text = "Best Score = " + bscore.ToString();
         }
     }
 }
