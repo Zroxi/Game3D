@@ -8,7 +8,6 @@ public class CharacterMovement : MonoBehaviour
     CharacterController characterController;
     public float speed = 6.0f;
     public float roatationSpeed = 25;
-    public float jumpSpeed = 7.5f;
     public float gravity = 20.0f;
     Vector3 inputVec;
     Vector3 targetDirection;
@@ -32,19 +31,14 @@ public class CharacterMovement : MonoBehaviour
         if (x != 0 || z != 0)
         {
             animator.SetBool("Moving", true);
-            animator.SetBool("Running", true);
         }
         else
         {
             animator.SetBool("Moving", false);
-            animator.SetBool("Running", false);
         }
 
-        if (characterController.isGrounded)
-        {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-            moveDirection *= speed;
-        }
+        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+        moveDirection *= speed;
         characterController.Move(moveDirection * Time.deltaTime);
         UpdateMovement();
     }
